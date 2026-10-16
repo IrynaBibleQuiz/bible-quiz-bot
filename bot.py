@@ -65,6 +65,8 @@ async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.message.reply_text(f'🎉 Вікторину завершено!\n\n✅ Правильних: {score}\n❌ Неправильних: {100-score}\n🏆 Результат: {score}/100 ({score}%)\n\nПовторити: /quiz')
 
 def main():
+    import asyncio
+    asyncio.set_event_loop(asyncio.new_event_loop())
     Thread(target=run_web, daemon=True).start()
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler('start', start))
